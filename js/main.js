@@ -20,7 +20,7 @@ function getTotal(list) {
     for (var key in list) {
         total += list[key].value * list[key].amount;
     }
-    return total;
+    document.getElementById("totalValue").innerHTML = formatValue(total);
 }
 
 function setList(list) {
@@ -29,7 +29,7 @@ function setList(list) {
         table += 
         '<tr>' +
             '<td>' + formatDesc(list[key].desc) + '</td>' +
-            '<td>' + list[key].amount + '</td>' +
+            '<td>' +  formatAmount(list[key].amount) + '</td>' +
             '<td>' + formatValue(list[key].value) + '</td>' +
             '<td>' +
                 '<button class="btn btn-default" onclick="setUpdate(' + key + ');">Edit</button> ' +
@@ -39,12 +39,17 @@ function setList(list) {
     }
     table += '</tbody>';
     document.getElementById("listTable").innerHTML = table;
+    getTotal(list);
 }
 
 function formatDesc(desc) {
     var str = desc.toLowerCase();
     str = str.charAt(0).toUpperCase() + str.slice(1);
     return str;
+}
+
+function formatAmount(amount) {
+    return parseInt(amount);
 }
 
 function formatValue(value) {
@@ -117,7 +122,20 @@ function deleteData(id) {
     }
 }
 
+function validation() {
+    var desc = document.getElementById("desc").value;
+    var amount = document.getElementById("amount").value;
+    var value = document.getElementById("value").value;
+    var erros = "";
+
+    if(desc === ""){
+        erros += '<p>Fill out description</p>'
+    }
+
+    if(amount === ""){
+
+    }
+}
+
 
 setList(list);
-
-console.log(getTotal(list));
