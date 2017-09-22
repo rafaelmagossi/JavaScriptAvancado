@@ -97,6 +97,13 @@ function resetForm() {
     document.getElementById("inputIDupdate").innerHTML = "";
 }
 
+function deleteList() {
+    if(confirm("Delete this list?")){
+        list = [];
+        setList(list);
+    }
+}
+
 function updateData() {
     if(!validation()){
         return;
@@ -148,7 +155,7 @@ function validation() {
     }
     if(value === ""){
         erros += '<p>Fill out quantity</p>'
-    }else if(value != parseFloat(amount)){
+    }else if(value != parseFloat(value)){
         erros += '<p>Fill out a valid value</p>'
     }
 
