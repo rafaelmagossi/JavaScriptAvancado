@@ -60,6 +60,9 @@ function formatValue(value) {
 }
 
 function addData() {
+    if(!validation()){
+        return;
+    }
     var desc = document.getElementById("desc").value;
     var amount = document.getElementById("amount").value;
     var value = document.getElementById("value").value;
@@ -93,6 +96,9 @@ function resetForm() {
 }
 
 function updateData() {
+    if(!validation()){
+        return;
+    }
     var id = document.getElementById("idUpdate").value;
     var desc = document.getElementById("desc").value;
     var amount = document.getElementById("amount").value;
@@ -126,14 +132,36 @@ function validation() {
     var desc = document.getElementById("desc").value;
     var amount = document.getElementById("amount").value;
     var value = document.getElementById("value").value;
+    document.getElementById("erros").style.display = "none";
     var erros = "";
 
     if(desc === ""){
-        erros += '<p>Fill out description</p>'
+        erros += '<p>Fill out description</p>';
     }
 
     if(amount === ""){
+        erros += '<p>Fill out quantity</p>';
+    }else if(amount != parseInt(amount)){
+        erros += '<p>Fill out a valid amount</p>';
+    }
+    if(value === ""){
+        erros += '<p>Fill out quantity</p>'
+    }else if(value != parseFloat(amount)){
+        erros += '<p>Fill out a valid value</p>'
+    }
 
+    if(erros != ""){
+        document.getElementById("erros").style.display = "block";
+        document.getElementById("erros").style.background = "rgba(85 ,85, 85 , 0.2)";
+        document.getElementById("erros").style.color = "white"
+        document.getElementById("erros").style.padding = "10px";
+        document.getElementById("erros").style.margin = "10px";
+        document.getElementById("erros").style.borderRadius = "13px";
+
+        document.getElementById("erros").innerHTML = "<h3>Error: </h3>" + erros;
+        return 0;
+    }else{
+        return 1;
     }
 }
 

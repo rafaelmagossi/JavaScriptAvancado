@@ -28,13 +28,19 @@
                 <input id="value" type="text" class="form-control" placeholder="Value">
             </div>
             <span id="btnUpdate" style="display: none;">
-                <span id="inputIDupdate">
-                    
-                </span>
+                <span id="inputIDupdate"></span>
                 <button onclick="updateData();" class="btn btn-default">Save</button>
                 <button onclick="resetForm();" class="btn btn-default">Cancel</button>
             </span>
-            <button id="btnAdd" onclick="addData();" class="btn btn-default">Add</button>
+            <span id="btnAdd">
+                    <button id="btnAdd" onclick="addData();" class="btn btn-default">Add</button>
+                    <button onclick="resetForm();" class="btn btn-default">Reset</button>
+                    <button onclick="deleteList();" class="btn btn-default">Delete List</button>
+            </span>
+        </div>
+
+        <div id="erros" style="display: none">
+            
         </div>
 
         <table id="listTable" class="table">
